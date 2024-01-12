@@ -2,67 +2,131 @@ Beta execution aborted: Stop is called.
 
 Stop message:
   "*** Exception processing
+Cannot delete file
+File exception for 'C:\Users\zelin\AppData\Roaming\CPN Tools\preferences.xml'
+Error in system call: Permission denied
 "
 
 Call chain: (nti_ms)
 
   item <stop#> in ~beta/basiclib/betaenv
     -- BETAENV-~ in ~beta/basiclib/betaenv
-  item <exception#> in ~beta/basiclib/betaenv
+  item OtherError#OtherError#FileException#streamException#<exception#> in ~beta/basiclib/betaenv
     -- BETAENV-~ in ~beta/basiclib/betaenv
-  item <Error#>error#hiErrCB#integerObject#integerValue# in C:/cpn2000/document/ml/mlsocket
-    -- MLSocket#BasicSocket# in C:/cpn2000/document/ml/mlsocket
-  item Error#<error#>hiErrCB#integerObject#integerValue# in ~beta/process/basicsocket
-    -- MLSocket#BasicSocket# in C:/cpn2000/document/ml/mlsocket
-  item Error#error#<hiErrCB#>integerObject#integerValue# in ~beta/process/errorcallback
-    -- BETAENV-~ in ~beta/basiclib/betaenv
-  item Error#error#hiErrCB#<integerObject#>integerValue# in ~beta/basiclib/betaenv
-    -- BETAENV-~ in ~beta/basiclib/betaenv
-  item Error#error#hiErrCB#integerObject#<integerValue#> in ~beta/basiclib/betaenv
-    -- BETAENV-~ in ~beta/basiclib/betaenv
-  item <error#>hiErrCB#integerObject#integerValue# in ~beta/process/basicsocket
-    -- *Put#withIdle#withPE# in C:/cpn2000/document/ml/private/mlcombody
-  item error#<hiErrCB#>integerObject#integerValue# in ~beta/process/errorcallback
-    -- BETAENV-~ in ~beta/basiclib/betaenv
-  item error#hiErrCB#<integerObject#>integerValue# in ~beta/basiclib/betaenv
-    -- BETAENV-~ in ~beta/basiclib/betaenv
-  item error#hiErrCB#integerObject#<integerValue#> in ~beta/basiclib/betaenv
-    -- BETAENV-~ in ~beta/basiclib/betaenv
-  item connBrokenError#<loErrCB#>errCB#integerValue# in ~beta/process/basicsocket
-    -- *Put#withIdle#withPE# in C:/cpn2000/document/ml/private/mlcombody
-  item connBrokenError#loErrCB#<errCB#>integerValue# in ~beta/process/errorcallback
-    -- BETAENV-~ in ~beta/basiclib/betaenv
-  item connBrokenError#loErrCB#errCB#<integerValue#> in ~beta/basiclib/betaenv
-    -- BETAENV-~ in ~beta/basiclib/betaenv
-  item *<errInquiry#> in ~beta/process/private/basicsocketbody
-    -- MLSocket#BasicSocket# in C:/cpn2000/document/ml/mlsocket
-  item <sendMem#> in ~beta/process/private/basicsocketbody
-    -- BASICSOCKETPRIVATE-~ in ~beta/process/private/basicsocketbody
-  item <*> in C:/cpn2000/document/ml/private/mlsocketbody
-    -- *Put#withIdle#withPE# in C:/cpn2000/document/ml/private/mlcombody
-  item *<Put#>withIdle#withPE# in C:/cpn2000/document/ml/mlsocket
-    -- MLSocket#BasicSocket# in C:/cpn2000/document/ml/mlsocket
-  item *Put#<withIdle#>withPE# in ~beta/process/basicsocket
-    -- MLSocket#BasicSocket# in C:/cpn2000/document/ml/mlsocket
-  item *Put#withIdle#<withPE#> in ~beta/process/basicsocket
-    -- MLSocket#BasicSocket# in C:/cpn2000/document/ml/mlsocket
-  item <Terminate#> in C:/cpn2000/document/ml/private/mlcombody
-    -- MLCOMPRIVATE-~ in C:/cpn2000/document/ml/private/mlcombody
-  comp <ReceiverThread#>System#SysHead# in C:/cpn2000/document/ml/private/mlcombody
-    -- MLCOMPRIVATE-~ in C:/cpn2000/document/ml/private/mlcombody
-  comp ReceiverThread#<System#>SysHead# in ~beta/basiclib/basicsystemenv
+  item <*>ProcessError# in ~beta/basiclib/private/file_ntbody
+    -- delete# in ~beta/basiclib/file
+  item *<ProcessError#> in ~beta/basiclib/private/file_ntbody
+    -- FILEPRIVATE-~ in ~beta/basiclib/private/file_ntbody
+  item <delete#> in ~beta/basiclib/file
+    -- saveFile#FileObject#File#stream# in C:/cpn2000/cpntools/cpnworkspace
+  item <*> in C:/cpn2000/cpntools/private/cpnworkspacebody
+    -- onQuit#onQuit# in C:/cpn2000/cpntools/cpnworkspace
+  item <onQuit#>onQuit# in C:/cpn2000/cpntools/cpnworkspace
     -- PROGRAM-~CPNWorkSpace#Workspace#World#SystemEnv#SysHead# in C:/cpn2000/cpntools/cpntools
-  comp ReceiverThread#System#<SysHead#> in ~beta/basiclib/basicsystemenv
+  item onQuit#<onQuit#> in ~beta/postwimp/foundation/world
+    -- PROGRAM-~CPNWorkSpace#Workspace#World#SystemEnv#SysHead# in C:/cpn2000/cpntools/cpntools
+  item <onQuit#>onQuit# in ~beta/postwimp/foundation/private/worldbody
+    -- WidgetHandler#SurfaceHandler# in ~beta/postwimp/foundation/private/worldbody
+  item onQuit#<onQuit#> in ~beta/postwimp/foundation/abstractsurface
+    -- WidgetHandler#SurfaceHandler# in ~beta/postwimp/foundation/private/worldbody
+  item <onAboutToClose#>aboutToClose#event# in ~beta/postwimp/foundation/guisurface
+    -- eventHandler#eventhandler#eventhandler# in ~beta/postwimp/foundation/guisurface
+  item onAboutToClose#<aboutToClose#>event# in ~beta/guienv/guienv
+    -- eventHandler#eventhandler#eventhandler# in ~beta/postwimp/foundation/guisurface
+  item onAboutToClose#aboutToClose#<event#> in ~beta/guienv/guienv
+    -- eventHandler#eventhandler#eventhandler# in ~beta/postwimp/foundation/guisurface
+  item <processClose#> in ~beta/guienv/private/winnt/windowbody
+    -- GUIENVWINDOWMETHODSDISPATCHMESSAGE-~ in ~beta/guienv/private/winnt/windowbody
+  item <GUIENVWINDOWMETHODSDISPATCHMESSAGE-~> in ~beta/guienv/private/winnt/windowbody
+    -- dispatchMessage#dispatchMessage# in ~beta/guienv/private/winnt/guienv_ntiprivate
+  item <dispatchMessage#>dispatchMessage# in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- windowMethods#interfaceObjectMethods# in ~beta/guienv/private/winnt/guienv_ntiprivate
+  allocating item dispatchMessage#<dispatchMessage#> in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- windowMethods#interfaceObjectMethods# in ~beta/guienv/private/winnt/guienv_ntiprivate
+  item dispatchMessage#<dispatchMessage#> in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- windowMethods#interfaceObjectMethods# in ~beta/guienv/private/winnt/guienv_ntiprivate
+  item <GUIENVINTERFACEOBJECTDISPATCHMESSAGE-~> in ~beta/guienv/private/winnt/guienv_ntibody
+    -- dispatchMessage# in ~beta/guienv/private/winnt/guienv_ntiprivate
+  item <dispatchMessage#> in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- main#window#interfaceObject# in ~beta/postwimp/foundation/guisurface
+  item <GUIENVSTANDARDWINDOWPROC-~> in ~beta/guienv/private/winnt/guienv_ntibody
+    -- StandardWindowProc# in ~beta/guienv/private/winnt/guienv_ntiprivate
+  item <*>cycle# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- XcallbackThread#System#SysHead# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  item *<cycle#> in ~beta/basiclib/betaenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  comp <XcallbackThread#>System#SysHead# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- PIOPRIVATE-~ in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  comp XcallbackThread#<System#>SysHead# in ~beta/basiclib/basicsystemenv
+    -- PROGRAM-~CPNWorkSpace#Workspace#World#SystemEnv#SysHead# in C:/cpn2000/cpntools/cpntools
+  comp XcallbackThread#System#<SysHead#> in ~beta/basiclib/basicsystemenv
     -- BETAENV-~ in ~beta/basiclib/betaenv
 
-  item <attNext#>realValue# in ~beta/basiclib/private/basicsystemenvbody
-    -- BASICSYSTEMENVPRIVATE-~ in ~beta/basiclib/private/basicsystemenvbody
   item attNext#<realValue#> in ~beta/basiclib/betaenv
     -- BETAENV-~ in ~beta/basiclib/betaenv
-  item <UIIdle#>booleanValue# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  item <next#> in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- XcallbackThread#System#SysHead# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  item <registerCallback#>XsystemEnvHandleCallbackP# in ~beta/guienv/private/winnt/guienvntsystemenvbody
     -- PIOPRIVATE-~ in ~beta/guienv/private/winnt/guienvntsystemenvbody
-  item UIIdle#<booleanValue#> in ~beta/basiclib/betaenv
+  item registerCallback#<XsystemEnvHandleCallbackP#> in ~beta/guienv/guienv
+    -- GUIenv# in ~beta/guienv/guienv
+  item <StandardWindowProc#> in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- GUIenv# in ~beta/guienv/guienv
+  item <StandardWindowProc#> in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- GUIenv# in ~beta/guienv/guienv
+  [ EXTERNAL ACTIVATION PART ]
+  item <GUIENVSTANDARDWINDOWPROC-~> in ~beta/guienv/private/winnt/guienv_ntibody
+    -- StandardWindowProc# in ~beta/guienv/private/winnt/guienv_ntiprivate
+  item <*>cycle# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- XcallbackThread#System#SysHead# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  item *<cycle#> in ~beta/basiclib/betaenv
     -- BETAENV-~ in ~beta/basiclib/betaenv
+  comp <XcallbackThread#>System#SysHead# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- PIOPRIVATE-~ in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  comp XcallbackThread#<System#>SysHead# in ~beta/basiclib/basicsystemenv
+    -- PROGRAM-~CPNWorkSpace#Workspace#World#SystemEnv#SysHead# in C:/cpn2000/cpntools/cpntools
+  comp XcallbackThread#System#<SysHead#> in ~beta/basiclib/basicsystemenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+
+  item attNext#<realValue#> in ~beta/basiclib/betaenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  item <next#> in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- XcallbackThread#System#SysHead# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  item <registerCallback#>XsystemEnvHandleCallbackP# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- PIOPRIVATE-~ in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  item registerCallback#<XsystemEnvHandleCallbackP#> in ~beta/guienv/guienv
+    -- GUIenv# in ~beta/guienv/guienv
+  item <StandardWindowProc#> in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- GUIenv# in ~beta/guienv/guienv
+  item <StandardWindowProc#> in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- GUIenv# in ~beta/guienv/guienv
+  [ EXTERNAL ACTIVATION PART ]
+  item <GUIENVSTANDARDWINDOWPROC-~> in ~beta/guienv/private/winnt/guienv_ntibody
+    -- StandardWindowProc# in ~beta/guienv/private/winnt/guienv_ntiprivate
+  item <*>cycle# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- XcallbackThread#System#SysHead# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  item *<cycle#> in ~beta/basiclib/betaenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  comp <XcallbackThread#>System#SysHead# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- PIOPRIVATE-~ in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  comp XcallbackThread#<System#>SysHead# in ~beta/basiclib/basicsystemenv
+    -- PROGRAM-~CPNWorkSpace#Workspace#World#SystemEnv#SysHead# in C:/cpn2000/cpntools/cpntools
+  comp XcallbackThread#System#<SysHead#> in ~beta/basiclib/basicsystemenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+
+  item attNext#<realValue#> in ~beta/basiclib/betaenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  item <next#> in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- XcallbackThread#System#SysHead# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  item <registerCallback#>XsystemEnvHandleCallbackP# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- PIOPRIVATE-~ in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  item registerCallback#<XsystemEnvHandleCallbackP#> in ~beta/guienv/guienv
+    -- GUIenv# in ~beta/guienv/guienv
+  item <StandardWindowProc#> in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- GUIenv# in ~beta/guienv/guienv
+  item <StandardWindowProc#> in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- GUIenv# in ~beta/guienv/guienv
+  [ EXTERNAL ACTIVATION PART ]
   item <processOneEvent#> in ~beta/guienv/private/winnt/guienv_ntiprivate
     -- GUIenv# in ~beta/guienv/guienv
   item <mainLoop#> in ~beta/guienv/private/winnt/guienv_ntiprivate
@@ -114,6 +178,9 @@ Low level information:
 
 Stop message:
   "*** Exception processing
+Cannot delete file
+File exception for 'C:\Users\zelin\AppData\Roaming\CPN Tools\preferences.xml'
+Error in system call: Permission denied
 "
 
 Call chain: (nti_ms)

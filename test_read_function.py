@@ -9,17 +9,16 @@ def clear_node(branch):
         n+=1
     return branch
 
+# Classe que armazena as missões de cada nodo
 class Missions():
     def __init__(self, data):
         self.data = data
         self.mission = None
 
-
 document = xml.dom.minidom.parse("wp.xml") # Faz a leitura do arquivo XML
+# document = xml.dom.minidom.parse("ST_new_2.xml") # Faz a leitura do arquivo Soccer Team XML
 
 node = document.getElementsByTagName("goal")
-
-visited = []
 
 goal = document.getElementsByTagName("goal")[0] # Pega o primeiro nodo goal
 root = goal # Armazena o primeiro goal que será o nodo raiz da árvore
@@ -36,13 +35,13 @@ for i in range(0, len(missions)):
         browser.append(current)
     goals_missions.append(browser)
 
-# Print all the goals and mission atached to them
+# Printa todos os goals e suas missões
 # for i in range(0, len(goals_missions)):
 #     print("Mission: " + goals_missions[i][0].mission)
 #     for j in range(0, len(goals_missions[i])):
 #         print(" ", goals_missions[i][j].data.getAttribute("id"))
             
-#Check which mission the current node has
+# Cehca qual missão pertence ao goal atual
 # for i in range(0, len(goals_missions)):
 #     for j in range(0, len(goals_missions[i])):
 #         if goals_missions[i][j].data.getAttribute("id") == goal.getAttribute("id"):
@@ -61,18 +60,22 @@ node = root
 
 while True:
     # if (node.nodeName == "goal"):
-    #     print("Node: {}, Id: {}, hasChild: {}".format(node.nodeName, node.getAttribute("id"), node.hasChildNodes()))
+        # print("Node: {}, Id: {}, hasChild: {}".format(node.nodeName, node.getAttribute("id"), node.hasChildNodes()))
     if node.hasChildNodes() == True:
         clear_node(node.childNodes)
         node = node.childNodes[0]
     elif node.hasChildNodes() == False:
         if (node.nodeName == "goal"):
             print("* Leu o Nó: {}".format(node.getAttribute("id")))
-        elif (node.nodeName == "plan"):
-            print("* Leu o Plano: {}".format(node.getAttribute("operator")))
+            print(" * Colocou Transição")
+        # elif (node.nodeName == "plan"):
+        #     print("* Leu o Plano: {}".format(node.getAttribute("operator")))
         parent = node.parentNode # Armazena o nodo pai
         node.parentNode.removeChild(node) # Remove o nodo atual
         node = parent
     if root.hasChildNodes() == False:
-        print ("* Fim da árvore")
+        print("* Leu o Nó: {}".format(node.getAttribute("id")))
+        print(" * Colocou Transição")
         break
+print("* Leu o Nó: end")
+print(" * Fim da Árvore")
