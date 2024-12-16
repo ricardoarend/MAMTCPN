@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipular XML</title>
+</head>
+<body>
+    <h2>Enviar Arquivo XML</h2>
+    <form action="http://127.0.0.1:5000/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="xml_file" accept=".xml" required>
+        <button type="submit">Enviar XML</button>
+    </form>
+    <hr>
+    <h2>Adicionar Novo Cadastro</h2>
+    <form action="http://127.0.0.1:5000/add_entry" method="post">
+        <label for="tag">Tag:</label>
+        <input type="text" id="tag" name="tag" required><br>
+        <label for="content">Conteúdo:</label>
+        <input type="text" id="content" name="content" required><br>
+        <button type="submit">Adicionar ao XML</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="http://moise.sourceforge.net/xml/os.xsl" type="text/xsl" ?>
+
+<organisational-specification
+
+    id="wp"
+    os-version="0.8"
+
+    xmlns='http://moise.sourceforge.net/os'
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xsi:schemaLocation='http://moise.sourceforge.net/os
+                        http://moise.sourceforge.net/xml/os.xsd' >
+
+    <structural-specification>    
+        <role-definitions>
+            <role id="inspector" />
+            <role id="farmer"/> 
+            <role id="ricep"> <extends role="farmer"/> </role>
+            <role id="soyp"> <extends role="farmer"/> </role>
+            <role id="animalp"> <extends role="farmer"/> </role>
+        </role-definitions>
+        <group-specification id="gorim" >
+            <roles>
+                <role id="inspector" />               
+                <role id="ricep"  />
+                <role id="soyp" />
+                <role id="animalp" />
+            </roles>
+            <links>
+                <link from="inspector" type="authority"  to="farmer" scope="intra-group" />                
+            </links>
+        </group-specification>
+    </structural-specification>
+
+    <functional-specification>	
+		<scheme id="inspSch">				
+			<goal id="g17" ds="Realizar Fiscalização">
+				<plan operator="sequence">
+					<goal id="g18" ds="Contatar produtor">
+						<plan operator="sequence">
+							<goal id="g22" ds="Localizar produtor" />
+							<goal id="g23" ds="Ir na propriedade"/>
+							<goal id="g24" ds="Falar com o produtor"/>
+						</plan>
+					</goal>
+					<goal id="g19" ds="Obter Informações">
+						<plan operator="parallel">
+							<goal id="g25" ds="Visualizar propriedade" />
+							<goal id="g26" ds="Entregar informações da propriedade"/>																
+						</plan>
+					</goal>
+					<goal id="g20" ds="Avaliar Informações">
+						<plan operator="sequence">
+							<goal id="g29" ds="Consultar tabela do ambiente" />
+							<goal id="g30" ds="Avaliar impacto na propriedade">
+								<plan operator="choice">
+									<goal id="g31" ds="Avaliar produção"/>
+									<goal id="g32" ds="Avaliar índice de poluição"/>
+								</plan>
+							</goal>
+						</plan>
+					</goal>
+					<goal id="g21" ds="Aplicar Sanção">
+						<plan operator="sequence">
+							<goal id="g33" ds="Definir Sanções">
+								<plan operator="choice">
+									<goal id="g34" ds="Definir valor da multa"/>
+									<goal id="g35" ds="Definir notificação"/>
+								</plan>
+							</goal>
+							<goal id="g36" ds="Comunicar Sanções">
+								<plan operator="choice">
+									<goal id="g38" ds="Aplicar multa" />
+									<goal id="g39" ds="Aplicar notificação"/>
+									<goal id="g40" ds="Não aplicar notificação"/>
+								</plan>
+							</goal>
+							<goal id="g37" ds="Cumprir Sanções">
+								<plan operator="parallel">
+									<goal id="g41" ds="Pagar multa"/>
+									<goal id="g42" ds="Confirmar recebimento "/>
+								</plan>
+							</goal>
+						</plan>
+					</goal>
+				</plan>
+			</goal>
+					
+			<mission id="m3" min="1" max="1">
+				<goal id="g17" />
+				<goal id="g18" />
+				<goal id="g19" />
+				<goal id="g20" />
+				<goal id="g21" />
+				<goal id="g22" />
+				<goal id="g23" />
+				<goal id="g24" />				
+				<goal id="g25" />				
+				<goal id="g29" />
+				<goal id="g30" />
+				<goal id="g31" />
+				<goal id="g32" />				
+				<goal id="g33" />
+				<goal id="g34" />
+				<goal id="g35" />
+				<goal id="g36" />
+				<goal id="g38" />
+				<goal id="g39" />
+				<goal id="g40" />
+			</mission>
+			
+			<mission id="m4" min="1" max="4">
+				<goal id="g26" />				
+				<goal id="g37" />
+				<goal id="g41" />
+				<goal id="g42" />
+			</mission>
+					
+		</scheme>		
+	</functional-specification>	
+	
+    <normative-specification>    
+        <norm id = "n1" role="inspector" type="obligation" mission="m3" />          
+        <norm id = "n2" role="soyp" type="obligation" mission="m4" />
+        <norm id = "n3" role="ricep" type="obligation" mission="m4"/>
+        <norm id = "n4" role="animalp" type="obligation" mission="m4"/>
+    </normative-specification>
+</organisational-specification>
+

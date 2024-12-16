@@ -45,29 +45,24 @@
 					<id>STRING</id>
 					<string />
 				</color>
-				<color id="ID4718746891">
+				<color id="ID5614454926">
 					<id>R</id>
 					<enum>
-						<id>fiscal</id>
-						<id>agricultor</id>
+						<id>inspector</id>
+						<id>ricep</id>
+						<id>soyp</id>
+						<id>animalp</id>
 					</enum>
-					<layout>colset R = with fiscal | agricultor;</layout>
+					<layout>colset R = with inspector | ricep | soyp | animalp;</layout>
 				</color>
-				<color id="ID9256580454">
+				<color id="ID7688903086">
 					<id>G</id>
 					<enum>
-						<id>gorim_group</id>
+						<id>gorim</id>
 					</enum>
-					<layout>colset G = with gorim_group;</layout>
+					<layout>colset G = with gorim;</layout>
 				</color>
-				<color id="ID2041772184">
-					<id>ROLES</id>
-					<list>
-						<id>R</id>
-					</list>
-					<layout>colset ROLES = list R;</layout>
-				</color>
-				<color id="ID8547805082">
+				<color id="ID4144479514">
 					<id>RG</id>
 					<product>
 						<id>R</id>
@@ -75,48 +70,59 @@
 					</product>
 					<layout>colset RG = product R * G ;</layout>
 				</color>
-				<var id="ID3587082926">
+				<var id="ID5473486152">
 					<type>
 						<id>RG</id>
 					</type>
-					<id>r1</id>
-					<id>r2</id>
-					<layout>var r1, r2 : RG;</layout>
+					<id>v1</id>
+					<id>v2</id>
+					<id>v3</id>
+					<id>v4</id>
+					<layout>var v1, v2, v3, v4 : RG;</layout>
 				</var>
-				<var id="ID1689381162">
-					<type>
-						<id>BOOL</id>
-					</type>
-					<id>b</id>
-					<layout>var b : BOOL;</layout>
-				</var>
-				<ml id="ID8893603897">val Ngorim_group = 1;<layout>val Ngorim_group = 1;</layout>
+				<ml id="ID2290317050">val Ngorim = 1;<layout>val Ngorim = 1;</layout>
 				</ml>
-				<ml id="ID3523464339">val Nfiscal = 1;<layout>val Nfiscal = 1;</layout>
+				<ml id="ID7409631330">val Ninspector = 1;<layout>val Ninspector = 1;</layout>
 				</ml>
-				<ml id="ID6675694198">val Nagricultor = 1;<layout>val Nagricultor = 1;</layout>
+				<ml id="ID4977512232">val Nricep = 1;<layout>val Nricep = 1;</layout>
 				</ml>
-				<ml id="ID5461254316">val Cmax_m3 = 1;<layout>val Cmax_m3 = 1;</layout>
+				<ml id="ID4720768197">val Nsoyp = 1;<layout>val Nsoyp = 1;</layout>
 				</ml>
-				<ml id="ID7615553413">val Cmin_m3 = 1;<layout>val Cmin_m3 = 1;</layout>
+				<ml id="ID6900780266">val Nanimalp = 1;<layout>val Nanimalp = 1;</layout>
 				</ml>
-				<ml id="ID4272447285">val Cmax_m4 = 1;<layout>val Cmax_m4 = 1;</layout>
+				<ml id="ID1197495682">val Cmax_m3 = 1;<layout>val Cmax_m3 = 1;</layout>
 				</ml>
-				<ml id="ID8022319324">val Cmin_m4 = 1;<layout>val Cmin_m4 = 1;</layout>
+				<ml id="ID7798849899">val Cmin_m3 = 1;<layout>val Cmin_m3 = 1;</layout>
 				</ml>
-				<ml id="ID4561512245">fun Fm1(r1) = if Nfiscal &lt;= Cmax_m3 then Nfiscal`r1 else Cmax_m3`r1;<layout>fun Fm1(r1) = if Nfiscal &lt;= Cmax_m3 then Nfiscal`r1 else Cmax_m3`r1;</layout>
+				<ml id="ID4900753654">val Cmax_m4 = 1;<layout>val Cmax_m4 = 1;</layout>
 				</ml>
-				<ml id="ID2481329435">fun Fm2(r2) = if Nagricultor &lt;= Cmax_m4 then Nagricultor`r2 else Cmax_m4`r2;<layout>fun Fm2(r2) = if Nagricultor &lt;= Cmax_m4 then Nagricultor`r2 else Cmax_m4`r2;</layout>
+				<ml id="ID5214604947">val Cmin_m4 = 1;<layout>val Cmin_m4 = 1;</layout>
 				</ml>
-				<ml id="ID3509236966">fun Tmin_m3() = Nfiscal &gt;= Cmin_m3;<layout>fun Tmin_m3() = Nfiscal &gt;= Cmin_m3;</layout>
+				<ml id="ID1398799049">fun Fmax_m3(v1) = case v1 of
+(inspector,gorim)=&gt;(if Ninspector&lt;= Cmax_m3 then Ninspector`v1 else Cmax_m3`v1);<layout>fun Fmax_m3(v1) = case v1 of
+(inspector,gorim)=&gt;(if Ninspector&lt;= Cmax_m3 then Ninspector`v1 else Cmax_m3`v1);</layout>
 				</ml>
-				<ml id="ID1078051309">fun Tmin_m4() = Nagricultor &gt;= Cmin_m4;<layout>fun Tmin_m4() = Nagricultor &gt;= Cmin_m4;</layout>
+				<ml id="ID6288409330">fun Fmax_m4(v2) = case v2 of
+(soyp,gorim)=&gt;(if Nsoyp&lt;= Cmax_m4 then Nsoyp`v2 else Cmax_m4`v2) |
+(ricep,gorim)=&gt;(if Nricep&lt;= Cmax_m4 then Nricep`v2 else Cmax_m4`v2) |
+(animalp,gorim)=&gt;(if Nanimalp&lt;= Cmax_m4 then Nanimalp`v2 else Cmax_m4`v2);<layout>fun Fmax_m4(v2) = case v2 of
+(soyp,gorim)=&gt;(if Nsoyp&lt;= Cmax_m4 then Nsoyp`v2 else Cmax_m4`v2) |
+(ricep,gorim)=&gt;(if Nricep&lt;= Cmax_m4 then Nricep`v2 else Cmax_m4`v2) |
+(animalp,gorim)=&gt;(if Nanimalp&lt;= Cmax_m4 then Nanimalp`v2 else Cmax_m4`v2);</layout>
+				</ml>
+				<ml id="ID1838087031">fun Fmin_m3()=Ninspector &gt;= Cmin_m3;<layout>fun Fmin_m3()=Ninspector &gt;= Cmin_m3;</layout>
+				</ml>
+				<ml id="ID8801415887">fun Fmin_m4()=Nsoyp &gt;= Cmin_m4 andalso Nricep &gt;= Cmin_m4 andalso Nanimalp &gt;= Cmin_m4;<layout>fun Fmin_m4()=Nsoyp &gt;= Cmin_m4 andalso Nricep &gt;= Cmin_m4 andalso Nanimalp &gt;= Cmin_m4;</layout>
+				</ml>
+				<ml id="ID9371817016">fun Fdeon_m3(v1)=v1=(inspector,gorim);<layout>fun Fdeon_m3(v1)=v1=(inspector,gorim);</layout>
+				</ml>
+				<ml id="ID9991168169">fun Fdeon_m4(v2)=v2=(soyp,gorim) orelse v2=(ricep,gorim) orelse v2=(animalp,gorim);<layout>fun Fdeon_m4(v2)=v2=(soyp,gorim) orelse v2=(ricep,gorim) orelse v2=(animalp,gorim);</layout>
 				</ml>
 			</block>
 		</globbox>
 		<page id="ID6">
-			<pageattr name="fiscalizador.xml" />
-			<place id="ID1092251968">
+			<pageattr name="modified.xml" />
+			<place id="ID3017873090">
 				<posattr x="0" y="250" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -124,17 +130,17 @@
 				<text>start</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID1092251969">
+				<type id="ID3017873091">
 					<posattr x="32.5" y="220" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">BOOL</text>
 				</type>
-				<initmark id="ID10922519610">
+				<initmark id="ID3017873092">
 					<posattr x="56" y="277" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -142,7 +148,7 @@
 					<text tool="CPN Tools" version="4.0.1">1`true</text>
 				</initmark>
 			</place>
-			<trans id="ID5100705662">
+			<trans id="ID3164823727">
 				<posattr x="0" y="150" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -150,30 +156,30 @@
 				<text>t1</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID5100705663">
+				<cond id="ID3164823728">
 					<posattr x="130.000000" y="150" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Tmin_m3() andalso
-Tmin_m4() andalso
-r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fmin_m3(),
+Fmin_m4(),
+Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID5100705664">
+				<time id="ID3164823729">
 					<posattr x="56" y="177" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID5100705665">
+				<code id="ID31648237210">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID5100705666">
+				<priority id="ID31648237211">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -181,23 +187,23 @@ r1 = (fiscal,gorim_group)</text>
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID4023422120" orientation="PtoT" order="1">
+			<arc id="ID2832173194" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID5100705662" />
-				<placeend idref="ID1092251968" />
-				<annot id="ID4023422121">
+				<transend idref="ID3164823727" />
+				<placeend idref="ID3017873090" />
+				<annot id="ID2832173195">
 					<posattr x="0" y="200.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">b</text>
+					<text tool="CPN Tools" version="4.0.1">1`true</text>
 				</annot>
 			</arc>
-			<place id="ID7542350240">
+			<place id="ID4054996373">
 				<posattr x="0" y="50" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -206,17 +212,17 @@ r1 = (fiscal,gorim_group)</text>
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID7542350241">
+				<type id="ID4054996374">
 					<posattr x="32.5" y="20" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID7542350242">
+				<initmark id="ID4054996375">
 					<posattr x="56" y="77" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -224,23 +230,23 @@ r1 = (fiscal,gorim_group)</text>
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID2846392139" orientation="TtoP" order="1">
+			<arc id="ID7804624832" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID5100705662" />
-				<placeend idref="ID7542350240" />
-				<annot id="ID28463921310">
+				<transend idref="ID3164823727" />
+				<placeend idref="ID4054996373" />
+				<annot id="ID7804624833">
 					<posattr x="0" y="100.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID1569200187">
+			<trans id="ID1626117869">
 				<posattr x="0" y="-50" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -248,28 +254,28 @@ r1 = (fiscal,gorim_group)</text>
 				<text>t2</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID1569200188">
+				<cond id="ID16261178610">
 					<posattr x="130.000000" y="-50" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID1569200189">
+				<time id="ID16261178611">
 					<posattr x="56" y="-23" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID15692001810">
+				<code id="ID16261178612">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID15692001811">
+				<priority id="ID16261178613">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -277,23 +283,23 @@ r1 = (fiscal,gorim_group)</text>
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID8667355892" orientation="PtoT" order="1">
+			<arc id="ID2703429248" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID1569200187" />
-				<placeend idref="ID7542350240" />
-				<annot id="ID8667355893">
+				<transend idref="ID1626117869" />
+				<placeend idref="ID4054996373" />
+				<annot id="ID2703429249">
 					<posattr x="0" y="0.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID1521981747">
+			<place id="ID2248111296">
 				<posattr x="0" y="-150" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -302,17 +308,17 @@ r1 = (fiscal,gorim_group)</text>
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID1521981748">
+				<type id="ID2248111297">
 					<posattr x="32.5" y="-180" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID1521981749">
+				<initmark id="ID2248111298">
 					<posattr x="56" y="-123" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -320,23 +326,23 @@ r1 = (fiscal,gorim_group)</text>
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID6837783340" orientation="TtoP" order="1">
+			<arc id="ID2128265323" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID1569200187" />
-				<placeend idref="ID1521981747" />
-				<annot id="ID6837783341">
+				<transend idref="ID1626117869" />
+				<placeend idref="ID2248111296" />
+				<annot id="ID2128265324">
 					<posattr x="0" y="-100.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID4612594136">
+			<trans id="ID7920479845">
 				<posattr x="0" y="-250" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -344,28 +350,28 @@ r1 = (fiscal,gorim_group)</text>
 				<text>t3</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID4612594137">
+				<cond id="ID7920479846">
 					<posattr x="130.000000" y="-250" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID4612594138">
+				<time id="ID7920479847">
 					<posattr x="56" y="-223" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID4612594139">
+				<code id="ID7920479848">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID46125941310">
+				<priority id="ID7920479849">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -373,23 +379,23 @@ r1 = (fiscal,gorim_group)</text>
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID7452505038" orientation="PtoT" order="1">
+			<arc id="ID4041069926" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID4612594136" />
-				<placeend idref="ID1521981747" />
-				<annot id="ID7452505039">
+				<transend idref="ID7920479845" />
+				<placeend idref="ID2248111296" />
+				<annot id="ID4041069927">
 					<posattr x="0" y="-200.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID4550115330">
+			<place id="ID1156490825">
 				<posattr x="0" y="-350" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -398,17 +404,17 @@ r1 = (fiscal,gorim_group)</text>
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID4550115331">
+				<type id="ID1156490826">
 					<posattr x="32.5" y="-380" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID4550115332">
+				<initmark id="ID1156490827">
 					<posattr x="56" y="-323" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -416,23 +422,23 @@ r1 = (fiscal,gorim_group)</text>
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID2148766086" orientation="TtoP" order="1">
+			<arc id="ID9495771254" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID4612594136" />
-				<placeend idref="ID4550115330" />
-				<annot id="ID2148766087">
+				<transend idref="ID7920479845" />
+				<placeend idref="ID1156490825" />
+				<annot id="ID9495771255">
 					<posattr x="0" y="-300.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID5100740005">
+			<trans id="ID1177200411">
 				<posattr x="0" y="-450" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -440,28 +446,28 @@ r1 = (fiscal,gorim_group)</text>
 				<text>t4</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID5100740006">
+				<cond id="ID1177200412">
 					<posattr x="130.000000" y="-450" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID5100740007">
+				<time id="ID1177200413">
 					<posattr x="56" y="-423" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID5100740008">
+				<code id="ID1177200414">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID5100740009">
+				<priority id="ID1177200415">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -469,23 +475,23 @@ r1 = (fiscal,gorim_group)</text>
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID9937018246" orientation="PtoT" order="1">
+			<arc id="ID7607994820" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID5100740005" />
-				<placeend idref="ID4550115330" />
-				<annot id="ID9937018247">
+				<transend idref="ID1177200411" />
+				<placeend idref="ID1156490825" />
+				<annot id="ID7607994821">
 					<posattr x="0" y="-400.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID1586301512">
+			<place id="ID9428012445">
 				<posattr x="0" y="-550" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -494,17 +500,17 @@ r1 = (fiscal,gorim_group)</text>
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID1586301513">
+				<type id="ID9428012446">
 					<posattr x="32.5" y="-580" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID1586301514">
+				<initmark id="ID9428012447">
 					<posattr x="56" y="-523" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -512,23 +518,23 @@ r1 = (fiscal,gorim_group)</text>
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID5541012969" orientation="TtoP" order="1">
+			<arc id="ID4065133474" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID5100740005" />
-				<placeend idref="ID1586301512" />
-				<annot id="ID55410129610">
+				<transend idref="ID1177200411" />
+				<placeend idref="ID9428012445" />
+				<annot id="ID4065133475">
 					<posattr x="0" y="-500.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID7737611676">
+			<trans id="ID8394964589">
 				<posattr x="0" y="-650" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -536,30 +542,30 @@ r1 = (fiscal,gorim_group)</text>
 				<text>t5</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID7737611677">
+				<cond id="ID83949645810">
 					<posattr x="130.000000" y="-650" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group) andalso
-r2 = (agricultor,gorim_group)
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1),
+ Fdeon_m4(v2)]
 </text>
 				</cond>
-				<time id="ID7737611678">
+				<time id="ID83949645811">
 					<posattr x="56" y="-623" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID7737611679">
+				<code id="ID83949645812">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID77376116710">
+				<priority id="ID83949645813">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -567,23 +573,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID7459902924" orientation="PtoT" order="1">
+			<arc id="ID3765603946" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID7737611676" />
-				<placeend idref="ID1586301512" />
-				<annot id="ID7459902925">
+				<transend idref="ID8394964589" />
+				<placeend idref="ID9428012445" />
+				<annot id="ID3765603947">
 					<posattr x="0" y="-600.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID8907788620">
+			<place id="ID7145250610">
 				<posattr x="-80" y="-750" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -592,17 +598,17 @@ r2 = (agricultor,gorim_group)
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID8907788621">
+				<type id="ID7145250611">
 					<posattr x="-47.5" y="-780" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID8907788622">
+				<initmark id="ID7145250612">
 					<posattr x="-24" y="-723" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -610,23 +616,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID6499902650" orientation="TtoP" order="1">
+			<arc id="ID7996227047" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID7737611676" />
-				<placeend idref="ID8907788620" />
-				<annot id="ID6499902651">
+				<transend idref="ID8394964589" />
+				<placeend idref="ID7145250610" />
+				<annot id="ID7996227048">
 					<posattr x="-80" y="-695" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID6865898651">
+			<trans id="ID3539618573">
 				<posattr x="0" y="-850" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -634,28 +640,29 @@ r2 = (agricultor,gorim_group)
 				<text>t6</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID6865898652">
+				<cond id="ID3539618574">
 					<posattr x="130.000000" y="-850" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r2 = (agricultor,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m4(v2),
+Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID6865898653">
+				<time id="ID3539618575">
 					<posattr x="56" y="-823" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID6865898654">
+				<code id="ID3539618576">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID6865898655">
+				<priority id="ID3539618577">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -663,215 +670,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID5434887219" orientation="PtoT" order="1">
+			<arc id="ID4276960023" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID6865898651" />
-				<placeend idref="ID8907788620" />
-				<annot id="ID54348872110">
+				<transend idref="ID3539618573" />
+				<placeend idref="ID7145250610" />
+				<annot id="ID4276960024">
 					<posattr x="-80" y="-805" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID4720843101">
-				<posattr x="150.0" y="-650" />
-				<fillattr colour="White" pattern="" filled="false" />
-				<lineattr colour="Black" thick="1" type="solid" />
-				<textattr colour="Black" bold="false" />
-				<text>g27
-(m4)</text>
-				<ellipse w="75.000000" h="40.000000" />
-				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
-					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
-				</marking>
-				<type id="ID4720843102">
-					<posattr x="182.5" y="-680" />
-					<fillattr colour="White" pattern="Solid" filled="false" />
-					<lineattr colour="Black" thick="0" type="Solid" />
-					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">RG</text>
-				</type>
-				<initmark id="ID4720843103">
-					<posattr x="206.0" y="-623" />
-					<fillattr colour="White" pattern="Solid" filled="false" />
-					<lineattr colour="Black" thick="0" type="Solid" />
-					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1" />
-				</initmark>
-			</place>
-			<arc id="ID2792551184" orientation="TtoP" order="1">
-				<posattr x="0.000000" y="0.000000" />
-				<fillattr colour="White" pattern="" filled="false" />
-				<lineattr colour="Black" thick="1" type="solid" />
-				<textattr colour="Black" bold="false" />
-				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID7737611676" />
-				<placeend idref="ID4720843101" />
-				<annot id="ID2792551185">
-					<posattr x="0" y="-850" />
-					<fillattr colour="White" pattern="Solid" filled="false" />
-					<lineattr colour="Black" thick="0" type="Solid" />
-					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm2(r2)</text>
-				</annot>
-			</arc>
-			<trans id="ID2201224508">
-				<posattr x="300.0" y="-650" />
-				<fillattr colour="White" pattern="" filled="false" />
-				<lineattr colour="Black" thick="1" type="solid" />
-				<textattr colour="Black" bold="false" />
-				<text>t7</text>
-				<box w="60.000000" h="40.000000" />
-				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID2201224509">
-					<posattr x="300.0" y="-620.0" />
-					<fillattr colour="White" pattern="Solid" filled="false" />
-					<lineattr colour="Black" thick="0" type="Solid" />
-					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r2 = (agricultor,gorim_group)</text>
-				</cond>
-				<time id="ID22012245010">
-					<posattr x="356.0" y="-623" />
-					<fillattr colour="White" pattern="Solid" filled="false" />
-					<lineattr colour="Black" thick="0" type="Solid" />
-					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1" />
-				</time>
-				<code id="ID22012245011">
-					<posattr x="80.000000" y="0.000000" />
-					<fillattr colour="White" pattern="Solid" filled="false" />
-					<lineattr colour="Black" thick="0" type="Solid" />
-					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" />
-				</code>
-				<priority id="ID22012245012">
-					<posattr x="80.000000" y="0.000000" />
-					<fillattr colour="White" pattern="Solid" filled="false" />
-					<lineattr colour="Black" thick="0" type="Solid" />
-					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1" />
-				</priority>
-			</trans>
-			<arc id="ID2787564421" orientation="PtoT" order="1">
-				<posattr x="0.000000" y="0.000000" />
-				<fillattr colour="White" pattern="" filled="false" />
-				<lineattr colour="Black" thick="1" type="solid" />
-				<textattr colour="Black" bold="false" />
-				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID2201224508" />
-				<placeend idref="ID4720843101" />
-				<annot id="ID2787564422">
-					<posattr x="0" y="-800.0" />
-					<fillattr colour="White" pattern="Solid" filled="false" />
-					<lineattr colour="Black" thick="0" type="Solid" />
-					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm2(r2)</text>
-				</annot>
-			</arc>
-			<place id="ID3554312326">
-				<posattr x="450.0" y="-650" />
-				<fillattr colour="White" pattern="" filled="false" />
-				<lineattr colour="Black" thick="1" type="solid" />
-				<textattr colour="Black" bold="false" />
-				<text>g28
-(m4)</text>
-				<ellipse w="75.000000" h="40.000000" />
-				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
-					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
-				</marking>
-				<type id="ID3554312327">
-					<posattr x="482.5" y="-680" />
-					<fillattr colour="White" pattern="Solid" filled="false" />
-					<lineattr colour="Black" thick="0" type="Solid" />
-					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">RG</text>
-				</type>
-				<initmark id="ID3554312328">
-					<posattr x="506.0" y="-623" />
-					<fillattr colour="White" pattern="Solid" filled="false" />
-					<lineattr colour="Black" thick="0" type="Solid" />
-					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1" />
-				</initmark>
-			</place>
-			<arc id="ID9119316710" orientation="TtoP" order="1">
-				<posattr x="0.000000" y="0.000000" />
-				<fillattr colour="White" pattern="" filled="false" />
-				<lineattr colour="Black" thick="1" type="solid" />
-				<textattr colour="Black" bold="false" />
-				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID2201224508" />
-				<placeend idref="ID3554312326" />
-				<annot id="ID9119316711">
-					<posattr x="0" y="-800.0" />
-					<fillattr colour="White" pattern="Solid" filled="false" />
-					<lineattr colour="Black" thick="0" type="Solid" />
-					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm2(r2)</text>
-				</annot>
-			</arc>
-			<trans id="ID8781270660">
-				<posattr x="600.0" y="-650" />
-				<fillattr colour="White" pattern="" filled="false" />
-				<lineattr colour="Black" thick="1" type="solid" />
-				<textattr colour="Black" bold="false" />
-				<text>t8</text>
-				<box w="60.000000" h="40.000000" />
-				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID8781270661">
-					<posattr x="600.0" y="-620.0" />
-					<fillattr colour="White" pattern="Solid" filled="false" />
-					<lineattr colour="Black" thick="0" type="Solid" />
-					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
-				</cond>
-				<time id="ID8781270662">
-					<posattr x="656.0" y="-623" />
-					<fillattr colour="White" pattern="Solid" filled="false" />
-					<lineattr colour="Black" thick="0" type="Solid" />
-					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1" />
-				</time>
-				<code id="ID8781270663">
-					<posattr x="80.000000" y="0.000000" />
-					<fillattr colour="White" pattern="Solid" filled="false" />
-					<lineattr colour="Black" thick="0" type="Solid" />
-					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" />
-				</code>
-				<priority id="ID8781270664">
-					<posattr x="80.000000" y="0.000000" />
-					<fillattr colour="White" pattern="Solid" filled="false" />
-					<lineattr colour="Black" thick="0" type="Solid" />
-					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1" />
-				</priority>
-			</trans>
-			<arc id="ID6415698717" orientation="PtoT" order="1">
-				<posattr x="0.000000" y="0.000000" />
-				<fillattr colour="White" pattern="" filled="false" />
-				<lineattr colour="Black" thick="1" type="solid" />
-				<textattr colour="Black" bold="false" />
-				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID8781270660" />
-				<placeend idref="ID3554312326" />
-				<annot id="ID6415698718">
-					<posattr x="0" y="-800.0" />
-					<fillattr colour="White" pattern="Solid" filled="false" />
-					<lineattr colour="Black" thick="0" type="Solid" />
-					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm2(r2)</text>
-				</annot>
-			</arc>
-			<place id="ID6782762234">
+			<place id="ID5785629149">
 				<posattr x="80.0" y="-750" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -880,17 +695,17 @@ r2 = (agricultor,gorim_group)
 (m4)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID6782762235">
+				<type id="ID57856291410">
 					<posattr x="112.5" y="-780" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID6782762236">
+				<initmark id="ID57856291411">
 					<posattr x="136" y="-723" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -898,39 +713,39 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID9752528964" orientation="TtoP" order="1">
+			<arc id="ID9651196764" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID8781270660" />
-				<placeend idref="ID6782762234" />
-				<annot id="ID9752528965">
-					<posattr x="330.0" y="-695" />
+				<transend idref="ID8394964589" />
+				<placeend idref="ID5785629149" />
+				<annot id="ID9651196765">
+					<posattr x="80.0" y="-695" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm2(r2)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m4(v2)</text>
 				</annot>
 			</arc>
-			<arc id="ID4437780068" orientation="PtoT" order="1">
+			<arc id="ID5181957866" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID6865898651" />
-				<placeend idref="ID6782762234" />
-				<annot id="ID4437780069">
+				<transend idref="ID3539618573" />
+				<placeend idref="ID5785629149" />
+				<annot id="ID5181957867">
 					<posattr x="80.0" y="-805" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm2(r2)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m4(v2)</text>
 				</annot>
 			</arc>
-			<place id="ID9684156813">
+			<place id="ID2168508253">
 				<posattr x="0" y="-950" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -939,17 +754,17 @@ r2 = (agricultor,gorim_group)
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID9684156814">
+				<type id="ID2168508254">
 					<posattr x="32.5" y="-980" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID9684156815">
+				<initmark id="ID2168508255">
 					<posattr x="56" y="-923" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -957,52 +772,52 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID8325573287" orientation="TtoP" order="1">
+			<arc id="ID1798480291" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID6865898651" />
-				<placeend idref="ID9684156813" />
-				<annot id="ID8325573288">
+				<transend idref="ID3539618573" />
+				<placeend idref="ID2168508253" />
+				<annot id="ID1798480292">
 					<posattr x="0" y="-900.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID5787136438">
+			<trans id="ID8415207106">
 				<posattr x="0" y="-1050" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t9</text>
+				<text>t7</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID5787136439">
+				<cond id="ID8415207107">
 					<posattr x="130.000000" y="-1050" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID57871364310">
+				<time id="ID8415207108">
 					<posattr x="56" y="-1023" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID57871364311">
+				<code id="ID8415207109">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID57871364312">
+				<priority id="ID84152071010">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1010,23 +825,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID9884343877" orientation="PtoT" order="1">
+			<arc id="ID2313335530" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID5787136438" />
-				<placeend idref="ID9684156813" />
-				<annot id="ID9884343878">
+				<transend idref="ID8415207106" />
+				<placeend idref="ID2168508253" />
+				<annot id="ID2313335531">
 					<posattr x="0" y="-1000.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID5209798705">
+			<place id="ID2435131462">
 				<posattr x="0" y="-1150" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -1035,17 +850,17 @@ r2 = (agricultor,gorim_group)
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID5209798706">
+				<type id="ID2435131463">
 					<posattr x="32.5" y="-1180" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID5209798707">
+				<initmark id="ID2435131464">
 					<posattr x="56" y="-1123" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1053,52 +868,52 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID6906467968" orientation="TtoP" order="1">
+			<arc id="ID4729222981" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID5787136438" />
-				<placeend idref="ID5209798705" />
-				<annot id="ID6906467969">
+				<transend idref="ID8415207106" />
+				<placeend idref="ID2435131462" />
+				<annot id="ID4729222982">
 					<posattr x="0" y="-1100.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID4605706998">
+			<trans id="ID1388909808">
 				<posattr x="-80" y="-1250" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t10</text>
+				<text>t8</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID4605706999">
+				<cond id="ID1388909809">
 					<posattr x="-200.0" y="-1250" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID4605706900">
+				<time id="ID13889098010">
 					<posattr x="56.000000" y="-1223" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID4605706901">
+				<code id="ID13889098011">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID4605706902">
+				<priority id="ID13889098012">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1106,23 +921,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID5080476862" orientation="PtoT" order="1">
+			<arc id="ID2938402566" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID4605706998" />
-				<placeend idref="ID5209798705" />
-				<annot id="ID5080476863">
+				<transend idref="ID1388909808" />
+				<placeend idref="ID2435131462" />
+				<annot id="ID2938402567">
 					<posattr x="-80" y="-1195" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID6219986748">
+			<place id="ID4937260429">
 				<posattr x="-80" y="-1350" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -1131,17 +946,17 @@ r2 = (agricultor,gorim_group)
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID6219986749">
+				<type id="ID49372604210">
 					<posattr x="-47.5" y="-1380" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID62199867410">
+				<initmark id="ID49372604211">
 					<posattr x="-24" y="-1323" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1149,52 +964,52 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID7205804640" orientation="TtoP" order="1">
+			<arc id="ID4549939227" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID4605706998" />
-				<placeend idref="ID6219986748" />
-				<annot id="ID7205804641">
+				<transend idref="ID1388909808" />
+				<placeend idref="ID4937260429" />
+				<annot id="ID4549939228">
 					<posattr x="-80" y="-1295" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID4276945083">
+			<trans id="ID3626673778">
 				<posattr x="-80" y="-1450" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t11</text>
+				<text>t9</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID4276945084">
+				<cond id="ID3626673779">
 					<posattr x="-200.0" y="-1450" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1" />
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID4276945085">
+				<time id="ID36266737710">
 					<posattr x="56.000000" y="-1423" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID4276945086">
+				<code id="ID36266737711">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID4276945087">
+				<priority id="ID36266737712">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1202,52 +1017,52 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID8835180742" orientation="PtoT" order="1">
+			<arc id="ID7547635584" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID4276945083" />
-				<placeend idref="ID6219986748" />
-				<annot id="ID8835180743">
+				<transend idref="ID3626673778" />
+				<placeend idref="ID4937260429" />
+				<annot id="ID7547635585">
 					<posattr x="-80" y="-1395" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID2281798750">
+			<trans id="ID6639011434">
 				<posattr x="80.0" y="-1250" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t12</text>
+				<text>t10</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID2281798751">
+				<cond id="ID6639011435">
 					<posattr x="200.0" y="-1250" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID2281798752">
+				<time id="ID6639011436">
 					<posattr x="56.000000" y="-1223" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID2281798753">
+				<code id="ID6639011437">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID2281798754">
+				<priority id="ID6639011438">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1255,23 +1070,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID7364875964" orientation="PtoT" order="1">
+			<arc id="ID7307059936" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID2281798750" />
-				<placeend idref="ID5209798705" />
-				<annot id="ID7364875965">
+				<transend idref="ID6639011434" />
+				<placeend idref="ID2435131462" />
+				<annot id="ID7307059937">
 					<posattr x="80" y="-1195" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID7604230386">
+			<place id="ID6077651576">
 				<posattr x="80.0" y="-1350" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -1280,17 +1095,17 @@ r2 = (agricultor,gorim_group)
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID7604230387">
+				<type id="ID6077651577">
 					<posattr x="112.5" y="-1380" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID7604230388">
+				<initmark id="ID6077651578">
 					<posattr x="136" y="-1323" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1298,52 +1113,52 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID1222516789" orientation="TtoP" order="1">
+			<arc id="ID9711989784" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID2281798750" />
-				<placeend idref="ID7604230386" />
-				<annot id="ID12225167810">
+				<transend idref="ID6639011434" />
+				<placeend idref="ID6077651576" />
+				<annot id="ID9711989785">
 					<posattr x="80" y="-1295" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID5624387405">
+			<trans id="ID8342673537">
 				<posattr x="80.0" y="-1450" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t13</text>
+				<text>t11</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID5624387406">
+				<cond id="ID8342673538">
 					<posattr x="200.0" y="-1450" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID5624387407">
+				<time id="ID8342673539">
 					<posattr x="56.000000" y="-1423" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID5624387408">
+				<code id="ID83426735310">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID5624387409">
+				<priority id="ID83426735311">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1351,23 +1166,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID1111710108" orientation="PtoT" order="1">
+			<arc id="ID1887571139" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID5624387405" />
-				<placeend idref="ID7604230386" />
-				<annot id="ID1111710109">
+				<transend idref="ID8342673537" />
+				<placeend idref="ID6077651576" />
+				<annot id="ID18875711310">
 					<posattr x="80" y="-1395" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID2285549945">
+			<place id="ID3524976955">
 				<posattr x="0" y="-1550" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -1376,17 +1191,17 @@ r2 = (agricultor,gorim_group)
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID2285549946">
+				<type id="ID3524976956">
 					<posattr x="32.5" y="-1580" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID2285549947">
+				<initmark id="ID3524976957">
 					<posattr x="56" y="-1523" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1394,68 +1209,68 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID5128077403" orientation="TtoP" order="1">
+			<arc id="ID3952439313" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID5624387405" />
-				<placeend idref="ID2285549945" />
-				<annot id="ID5128077404">
+				<transend idref="ID8342673537" />
+				<placeend idref="ID3524976955" />
+				<annot id="ID3952439314">
 					<posattr x="-80" y="-1505" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<arc id="ID1579803992" orientation="TtoP" order="1">
+			<arc id="ID4089598048" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID4276945083" />
-				<placeend idref="ID2285549945" />
-				<annot id="ID1579803993">
+				<transend idref="ID3626673778" />
+				<placeend idref="ID3524976955" />
+				<annot id="ID4089598049">
 					<posattr x="80.0" y="-1505" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID7163172841">
+			<trans id="ID3675789596">
 				<posattr x="0" y="-1650" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t14</text>
+				<text>t12</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID7163172842">
+				<cond id="ID3675789597">
 					<posattr x="130.000000" y="-1650" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID7163172843">
+				<time id="ID3675789598">
 					<posattr x="56" y="-1623" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID7163172844">
+				<code id="ID3675789599">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID7163172845">
+				<priority id="ID3675789500">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1463,23 +1278,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID8545542932" orientation="PtoT" order="1">
+			<arc id="ID9143181579" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID7163172841" />
-				<placeend idref="ID2285549945" />
-				<annot id="ID8545542933">
+				<transend idref="ID3675789596" />
+				<placeend idref="ID3524976955" />
+				<annot id="ID91431815710">
 					<posattr x="0" y="-1600.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID2994006188">
+			<place id="ID5495081231">
 				<posattr x="0" y="-1750" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -1488,17 +1303,17 @@ r2 = (agricultor,gorim_group)
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID2994006189">
+				<type id="ID5495081232">
 					<posattr x="32.5" y="-1780" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID29940061810">
+				<initmark id="ID5495081233">
 					<posattr x="56" y="-1723" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1506,52 +1321,52 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID3150953512" orientation="TtoP" order="1">
+			<arc id="ID7591464819" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID7163172841" />
-				<placeend idref="ID2994006188" />
-				<annot id="ID3150953513">
+				<transend idref="ID3675789596" />
+				<placeend idref="ID5495081231" />
+				<annot id="ID75914648110">
 					<posattr x="0" y="-1700.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID1947731233">
+			<trans id="ID4205147886">
 				<posattr x="-80" y="-1850" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t15</text>
+				<text>t13</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID1947731234">
+				<cond id="ID4205147887">
 					<posattr x="-200.0" y="-1850" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID1947731235">
+				<time id="ID4205147888">
 					<posattr x="56.000000" y="-1823" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID1947731236">
+				<code id="ID4205147889">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID1947731237">
+				<priority id="ID42051478810">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1559,23 +1374,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID4492536099" orientation="PtoT" order="1">
+			<arc id="ID6037004732" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID1947731233" />
-				<placeend idref="ID2994006188" />
-				<annot id="ID4492536000">
+				<transend idref="ID4205147886" />
+				<placeend idref="ID5495081231" />
+				<annot id="ID6037004733">
 					<posattr x="-80" y="-1795" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID3962058574">
+			<place id="ID3926330221">
 				<posattr x="-80" y="-1950" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -1584,17 +1399,17 @@ r2 = (agricultor,gorim_group)
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID3962058575">
+				<type id="ID3926330222">
 					<posattr x="-47.5" y="-1980" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID3962058576">
+				<initmark id="ID3926330223">
 					<posattr x="-24" y="-1923" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1602,52 +1417,52 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID9831534909" orientation="TtoP" order="1">
+			<arc id="ID6733426939" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID1947731233" />
-				<placeend idref="ID3962058574" />
-				<annot id="ID98315349010">
+				<transend idref="ID4205147886" />
+				<placeend idref="ID3926330221" />
+				<annot id="ID67334269310">
 					<posattr x="-80" y="-1895" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID7098648994">
+			<trans id="ID6773701595">
 				<posattr x="-80" y="-2050" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t16</text>
+				<text>t14</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID7098648995">
+				<cond id="ID6773701596">
 					<posattr x="-200.0" y="-2050" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1" />
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID7098648996">
+				<time id="ID6773701597">
 					<posattr x="56.000000" y="-2023" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID7098648997">
+				<code id="ID6773701598">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID7098648998">
+				<priority id="ID6773701599">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1655,52 +1470,52 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID5716947593" orientation="PtoT" order="1">
+			<arc id="ID1237450099" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID7098648994" />
-				<placeend idref="ID3962058574" />
-				<annot id="ID5716947594">
+				<transend idref="ID6773701595" />
+				<placeend idref="ID3926330221" />
+				<annot id="ID1237450000">
 					<posattr x="-80" y="-1995" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID4606265046">
+			<trans id="ID4521691096">
 				<posattr x="80.0" y="-1850" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t17</text>
+				<text>t15</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID4606265047">
+				<cond id="ID4521691097">
 					<posattr x="200.0" y="-1850" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID4606265048">
+				<time id="ID4521691098">
 					<posattr x="56.000000" y="-1823" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID4606265049">
+				<code id="ID4521691099">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID46062650410">
+				<priority id="ID4521691000">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1708,23 +1523,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID6691750245" orientation="PtoT" order="1">
+			<arc id="ID8379863199" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID4606265046" />
-				<placeend idref="ID2994006188" />
-				<annot id="ID6691750246">
+				<transend idref="ID4521691096" />
+				<placeend idref="ID5495081231" />
+				<annot id="ID8379863100">
 					<posattr x="80" y="-1795" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID6494721334">
+			<place id="ID7098785138">
 				<posattr x="80.0" y="-1950" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -1733,17 +1548,17 @@ r2 = (agricultor,gorim_group)
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID6494721335">
+				<type id="ID7098785139">
 					<posattr x="112.5" y="-1980" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID6494721336">
+				<initmark id="ID70987851310">
 					<posattr x="136" y="-1923" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1751,52 +1566,52 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID4457638862" orientation="TtoP" order="1">
+			<arc id="ID8911933701" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID4606265046" />
-				<placeend idref="ID6494721334" />
-				<annot id="ID4457638863">
+				<transend idref="ID4521691096" />
+				<placeend idref="ID7098785138" />
+				<annot id="ID8911933702">
 					<posattr x="80" y="-1895" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID4968919384">
+			<trans id="ID9447220444">
 				<posattr x="80.0" y="-2050" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t18</text>
+				<text>t16</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID4968919385">
+				<cond id="ID9447220445">
 					<posattr x="200.0" y="-2050" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID4968919386">
+				<time id="ID9447220446">
 					<posattr x="56.000000" y="-2023" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID4968919387">
+				<code id="ID9447220447">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID4968919388">
+				<priority id="ID9447220448">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1804,23 +1619,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID5966830383" orientation="PtoT" order="1">
+			<arc id="ID5323998955" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID4968919384" />
-				<placeend idref="ID6494721334" />
-				<annot id="ID5966830384">
+				<transend idref="ID9447220444" />
+				<placeend idref="ID7098785138" />
+				<annot id="ID5323998956">
 					<posattr x="80" y="-1995" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID4737713640">
+			<place id="ID1264759653">
 				<posattr x="0" y="-2150" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -1829,17 +1644,17 @@ r2 = (agricultor,gorim_group)
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID4737713641">
+				<type id="ID1264759654">
 					<posattr x="32.5" y="-2180" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID4737713642">
+				<initmark id="ID1264759655">
 					<posattr x="56" y="-2123" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1847,68 +1662,68 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID2204047535" orientation="TtoP" order="1">
+			<arc id="ID1317121469" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID4968919384" />
-				<placeend idref="ID4737713640" />
-				<annot id="ID2204047536">
+				<transend idref="ID9447220444" />
+				<placeend idref="ID1264759653" />
+				<annot id="ID13171214610">
 					<posattr x="-80" y="-2105" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<arc id="ID7971170859" orientation="TtoP" order="1">
+			<arc id="ID2364839409" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID7098648994" />
-				<placeend idref="ID4737713640" />
-				<annot id="ID79711708510">
+				<transend idref="ID6773701595" />
+				<placeend idref="ID1264759653" />
+				<annot id="ID23648394010">
 					<posattr x="80.0" y="-2105" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID6466540464">
+			<trans id="ID1764660474">
 				<posattr x="-120" y="-2250" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t19</text>
+				<text>t17</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID6466540465">
+				<cond id="ID1764660475">
 					<posattr x="-300.0" y="-2250" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID6466540466">
+				<time id="ID1764660476">
 					<posattr x="56.000000" y="-2223" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID6466540467">
+				<code id="ID1764660477">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID6466540468">
+				<priority id="ID1764660478">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1916,23 +1731,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID4434172229" orientation="PtoT" order="1">
+			<arc id="ID2465224803" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID6466540464" />
-				<placeend idref="ID4737713640" />
-				<annot id="ID44341722210">
+				<transend idref="ID1764660474" />
+				<placeend idref="ID1264759653" />
+				<annot id="ID2465224804">
 					<posattr x="-120" y="-2195" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID1194944908">
+			<place id="ID8857346537">
 				<posattr x="-120" y="-2350" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -1941,17 +1756,17 @@ r2 = (agricultor,gorim_group)
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID1194944909">
+				<type id="ID8857346538">
 					<posattr x="-87.5" y="-2380" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID11949449010">
+				<initmark id="ID8857346539">
 					<posattr x="-64" y="-2323" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -1959,52 +1774,52 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID1596702613" orientation="TtoP" order="1">
+			<arc id="ID7708371939" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID6466540464" />
-				<placeend idref="ID1194944908" />
-				<annot id="ID1596702614">
+				<transend idref="ID1764660474" />
+				<placeend idref="ID8857346537" />
+				<annot id="ID77083719310">
 					<posattr x="-120" y="-2295" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID4526659961">
+			<trans id="ID2872800048">
 				<posattr x="-120" y="-2450" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t20</text>
+				<text>t18</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID4526659962">
+				<cond id="ID2872800049">
 					<posattr x="-300.0" y="-2450" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1" />
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID4526659963">
+				<time id="ID28728000410">
 					<posattr x="56.000000" y="-2423" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID4526659964">
+				<code id="ID28728000411">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID4526659965">
+				<priority id="ID28728000412">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2012,52 +1827,52 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID3625707108" orientation="PtoT" order="1">
+			<arc id="ID9000846237" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID4526659961" />
-				<placeend idref="ID1194944908" />
-				<annot id="ID3625707109">
+				<transend idref="ID2872800048" />
+				<placeend idref="ID8857346537" />
+				<annot id="ID9000846238">
 					<posattr x="-120" y="-2395" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID2066242096">
+			<trans id="ID4561901624">
 				<posattr x="0.0" y="-2250" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t21</text>
+				<text>t19</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID2066242097">
+				<cond id="ID4561901625">
 					<posattr x="0.0" y="-2250" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID2066242098">
+				<time id="ID4561901626">
 					<posattr x="56.000000" y="-2223" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID2066242099">
+				<code id="ID4561901627">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID2066242000">
+				<priority id="ID4561901628">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2065,23 +1880,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID5992172295" orientation="PtoT" order="1">
+			<arc id="ID1605911797" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID2066242096" />
-				<placeend idref="ID4737713640" />
-				<annot id="ID5992172296">
+				<transend idref="ID4561901624" />
+				<placeend idref="ID1264759653" />
+				<annot id="ID1605911798">
 					<posattr x="0" y="-2195" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID1973711138">
+			<place id="ID9899607776">
 				<posattr x="0.0" y="-2350" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -2090,17 +1905,17 @@ r2 = (agricultor,gorim_group)
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID1973711139">
+				<type id="ID9899607777">
 					<posattr x="32.5" y="-2380" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID19737111310">
+				<initmark id="ID9899607778">
 					<posattr x="56" y="-2323" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2108,52 +1923,52 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID8687996211" orientation="TtoP" order="1">
+			<arc id="ID6847533863" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID2066242096" />
-				<placeend idref="ID1973711138" />
-				<annot id="ID8687996212">
+				<transend idref="ID4561901624" />
+				<placeend idref="ID9899607776" />
+				<annot id="ID6847533864">
 					<posattr x="0" y="-2295" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID7989263807">
+			<trans id="ID6913988198">
 				<posattr x="0.0" y="-2450" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t22</text>
+				<text>t20</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID7989263808">
+				<cond id="ID6913988199">
 					<posattr x="0.0" y="-2450" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1" />
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID7989263809">
+				<time id="ID6913988100">
 					<posattr x="56.000000" y="-2423" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID79892638010">
+				<code id="ID6913988101">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID79892638011">
+				<priority id="ID6913988102">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2161,52 +1976,52 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID2021378214" orientation="PtoT" order="1">
+			<arc id="ID7053025212" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID7989263807" />
-				<placeend idref="ID1973711138" />
-				<annot id="ID2021378215">
+				<transend idref="ID6913988198" />
+				<placeend idref="ID9899607776" />
+				<annot id="ID7053025213">
 					<posattr x="0" y="-2395" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID5511772033">
+			<trans id="ID3643754254">
 				<posattr x="120.0" y="-2250" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t23</text>
+				<text>t21</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID5511772034">
+				<cond id="ID3643754255">
 					<posattr x="300.0" y="-2250" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID5511772035">
+				<time id="ID3643754256">
 					<posattr x="56.000000" y="-2223" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID5511772036">
+				<code id="ID3643754257">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID5511772037">
+				<priority id="ID3643754258">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2214,23 +2029,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID7819286841" orientation="PtoT" order="1">
+			<arc id="ID8622302165" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID5511772033" />
-				<placeend idref="ID4737713640" />
-				<annot id="ID7819286842">
+				<transend idref="ID3643754254" />
+				<placeend idref="ID1264759653" />
+				<annot id="ID8622302166">
 					<posattr x="120" y="-2195" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID3694365957">
+			<place id="ID3268132029">
 				<posattr x="120.0" y="-2350" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -2239,17 +2054,17 @@ r2 = (agricultor,gorim_group)
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID3694365958">
+				<type id="ID32681320210">
 					<posattr x="152.5" y="-2380" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID3694365959">
+				<initmark id="ID32681320211">
 					<posattr x="176" y="-2323" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2257,52 +2072,52 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID4336407722" orientation="TtoP" order="1">
+			<arc id="ID9621064674" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID5511772033" />
-				<placeend idref="ID3694365957" />
-				<annot id="ID4336407723">
+				<transend idref="ID3643754254" />
+				<placeend idref="ID3268132029" />
+				<annot id="ID9621064675">
 					<posattr x="120" y="-2295" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID6073933507">
+			<trans id="ID7874311632">
 				<posattr x="120.0" y="-2450" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t24</text>
+				<text>t22</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID6073933508">
+				<cond id="ID7874311633">
 					<posattr x="300.0" y="-2450" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID6073933509">
+				<time id="ID7874311634">
 					<posattr x="56.000000" y="-2423" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID60739335010">
+				<code id="ID7874311635">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID60739335011">
+				<priority id="ID7874311636">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2310,23 +2125,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID3974464846" orientation="PtoT" order="1">
+			<arc id="ID3578683593" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID6073933507" />
-				<placeend idref="ID3694365957" />
-				<annot id="ID3974464847">
+				<transend idref="ID7874311632" />
+				<placeend idref="ID3268132029" />
+				<annot id="ID3578683594">
 					<posattr x="120" y="-2395" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID4592465341">
+			<place id="ID6654677315">
 				<posattr x="0" y="-2550" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -2335,17 +2150,17 @@ r2 = (agricultor,gorim_group)
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID4592465342">
+				<type id="ID6654677316">
 					<posattr x="32.5" y="-2580" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID4592465343">
+				<initmark id="ID6654677317">
 					<posattr x="56" y="-2523" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2353,86 +2168,86 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID7649453734" orientation="TtoP" order="1">
+			<arc id="ID2197017078" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID6073933507" />
-				<placeend idref="ID4592465341" />
-				<annot id="ID7649453735">
+				<transend idref="ID7874311632" />
+				<placeend idref="ID6654677315" />
+				<annot id="ID2197017079">
 					<posattr x="-120" y="-2505" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<arc id="ID8331991037" orientation="TtoP" order="1">
+			<arc id="ID4411775730" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID7989263807" />
-				<placeend idref="ID4592465341" />
-				<annot id="ID8331991038">
+				<transend idref="ID6913988198" />
+				<placeend idref="ID6654677315" />
+				<annot id="ID4411775731">
 					<posattr x="0.0" y="-2505" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<arc id="ID2320051206" orientation="TtoP" order="1">
+			<arc id="ID8144209990" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID4526659961" />
-				<placeend idref="ID4592465341" />
-				<annot id="ID2320051207">
+				<transend idref="ID2872800048" />
+				<placeend idref="ID6654677315" />
+				<annot id="ID8144209991">
 					<posattr x="120.0" y="-2505" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID6235797251">
+			<trans id="ID2865087720">
 				<posattr x="0" y="-2650" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t25</text>
+				<text>t23</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID6235797252">
+				<cond id="ID2865087721">
 					<posattr x="130.000000" y="-2650" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r2 = (agricultor,gorim_group) andalso
-r2 = (agricultor,gorim_group)
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1),
+Fdeon_m4(v2)]
 </text>
 				</cond>
-				<time id="ID6235797253">
+				<time id="ID2865087722">
 					<posattr x="56" y="-2623" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID6235797254">
+				<code id="ID2865087723">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID6235797255">
+				<priority id="ID2865087724">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2440,23 +2255,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID7191836994" orientation="PtoT" order="1">
+			<arc id="ID9639786657" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID6235797251" />
-				<placeend idref="ID4592465341" />
-				<annot id="ID7191836995">
+				<transend idref="ID2865087720" />
+				<placeend idref="ID6654677315" />
+				<annot id="ID9639786658">
 					<posattr x="0" y="-2600.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID6266713691">
+			<place id="ID8260443789">
 				<posattr x="-80" y="-2750" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -2465,17 +2280,17 @@ r2 = (agricultor,gorim_group)
 (m4)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID6266713692">
+				<type id="ID82604437810">
 					<posattr x="-47.5" y="-2780" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID6266713693">
+				<initmark id="ID82604437811">
 					<posattr x="-24" y="-2723" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2483,52 +2298,52 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID5184222254" orientation="TtoP" order="1">
+			<arc id="ID4937918942" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID6235797251" />
-				<placeend idref="ID6266713691" />
-				<annot id="ID5184222255">
+				<transend idref="ID2865087720" />
+				<placeend idref="ID8260443789" />
+				<annot id="ID4937918943">
 					<posattr x="-80" y="-2695" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm2(r2)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m4(v2)</text>
 				</annot>
 			</arc>
-			<trans id="ID9360062993">
+			<trans id="ID1264189697">
 				<posattr x="0" y="-2850" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t26</text>
+				<text>t24</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID9360062994">
+				<cond id="ID1264189698">
 					<posattr x="130.000000" y="-2850" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r2 = (agricultor,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m4(v2)]</text>
 				</cond>
-				<time id="ID9360062995">
+				<time id="ID1264189699">
 					<posattr x="56" y="-2823" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID9360062996">
+				<code id="ID1264189600">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID9360062997">
+				<priority id="ID1264189601">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2536,23 +2351,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID2056543408" orientation="PtoT" order="1">
+			<arc id="ID5909926126" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID9360062993" />
-				<placeend idref="ID6266713691" />
-				<annot id="ID2056543409">
+				<transend idref="ID1264189697" />
+				<placeend idref="ID8260443789" />
+				<annot id="ID5909926127">
 					<posattr x="-80" y="-2805" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm2(r2)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m4(v2)</text>
 				</annot>
 			</arc>
-			<place id="ID5189960530">
+			<place id="ID2636809808">
 				<posattr x="80.0" y="-2750" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -2561,17 +2376,17 @@ r2 = (agricultor,gorim_group)
 (m4)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID5189960531">
+				<type id="ID2636809809">
 					<posattr x="112.5" y="-2780" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID5189960532">
+				<initmark id="ID26368098010">
 					<posattr x="136" y="-2723" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2579,39 +2394,39 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID9643960547" orientation="TtoP" order="1">
+			<arc id="ID9743800630" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID6235797251" />
-				<placeend idref="ID5189960530" />
-				<annot id="ID9643960548">
+				<transend idref="ID2865087720" />
+				<placeend idref="ID2636809808" />
+				<annot id="ID9743800631">
 					<posattr x="80.0" y="-2695" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm2(r2)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m4(v2)</text>
 				</annot>
 			</arc>
-			<arc id="ID9397616344" orientation="PtoT" order="1">
+			<arc id="ID4411430958" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID9360062993" />
-				<placeend idref="ID5189960530" />
-				<annot id="ID9397616345">
+				<transend idref="ID1264189697" />
+				<placeend idref="ID2636809808" />
+				<annot id="ID4411430959">
 					<posattr x="80.0" y="-2805" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm2(r2)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m4(v2)</text>
 				</annot>
 			</arc>
-			<place id="ID7606123774">
+			<place id="ID6360171627">
 				<posattr x="0" y="-2950" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -2620,17 +2435,17 @@ r2 = (agricultor,gorim_group)
 (m4)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID7606123775">
+				<type id="ID6360171628">
 					<posattr x="32.5" y="-2980" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID7606123776">
+				<initmark id="ID6360171629">
 					<posattr x="56" y="-2923" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2638,52 +2453,53 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID1492219142" orientation="TtoP" order="1">
+			<arc id="ID9998641279" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID9360062993" />
-				<placeend idref="ID7606123774" />
-				<annot id="ID1492219143">
+				<transend idref="ID1264189697" />
+				<placeend idref="ID6360171627" />
+				<annot id="ID99986412710">
 					<posattr x="0" y="-2900.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm2(r2)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m4(v2)</text>
 				</annot>
 			</arc>
-			<trans id="ID9942404469">
+			<trans id="ID2720991919">
 				<posattr x="0" y="-3050" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t27</text>
+				<text>t25</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID99424044610">
+				<cond id="ID27209919110">
 					<posattr x="130.000000" y="-3050" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m4(v2),
+Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID99424044611">
+				<time id="ID27209919111">
 					<posattr x="56" y="-3023" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID99424044612">
+				<code id="ID27209919112">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID99424044613">
+				<priority id="ID27209919113">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2691,23 +2507,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID3015056840" orientation="PtoT" order="1">
+			<arc id="ID9859019256" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID9942404469" />
-				<placeend idref="ID7606123774" />
-				<annot id="ID3015056841">
+				<transend idref="ID2720991919" />
+				<placeend idref="ID6360171627" />
+				<annot id="ID9859019257">
 					<posattr x="0" y="-3000.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm2(r2)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m4(v2)</text>
 				</annot>
 			</arc>
-			<place id="ID4716951776">
+			<place id="ID1097393084">
 				<posattr x="0" y="-3150" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -2716,17 +2532,17 @@ r2 = (agricultor,gorim_group)
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID4716951777">
+				<type id="ID1097393085">
 					<posattr x="32.5" y="-3180" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID4716951778">
+				<initmark id="ID1097393086">
 					<posattr x="56" y="-3123" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2734,52 +2550,52 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID7175045936" orientation="TtoP" order="1">
+			<arc id="ID3434169776" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID9942404469" />
-				<placeend idref="ID4716951776" />
-				<annot id="ID7175045937">
+				<transend idref="ID2720991919" />
+				<placeend idref="ID1097393084" />
+				<annot id="ID3434169777">
 					<posattr x="0" y="-3100.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID4166147547">
+			<trans id="ID9378586271">
 				<posattr x="0" y="-3250" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t28</text>
+				<text>t26</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID4166147548">
+				<cond id="ID9378586272">
 					<posattr x="130.000000" y="-3250" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">r1 = (fiscal,gorim_group)</text>
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID4166147549">
+				<time id="ID9378586273">
 					<posattr x="56" y="-3223" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID41661475410">
+				<code id="ID9378586274">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID41661475411">
+				<priority id="ID9378586275">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2787,23 +2603,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID5265338056" orientation="PtoT" order="1">
+			<arc id="ID4172649691" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID4166147547" />
-				<placeend idref="ID4716951776" />
-				<annot id="ID5265338057">
+				<transend idref="ID9378586271" />
+				<placeend idref="ID1097393084" />
+				<annot id="ID4172649692">
 					<posattr x="0" y="-3200.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID4760373574">
+			<place id="ID2707757518">
 				<posattr x="0" y="-3350" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -2812,17 +2628,17 @@ r2 = (agricultor,gorim_group)
 (m3)</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID4760373575">
+				<type id="ID2707757519">
 					<posattr x="32.5" y="-3380" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">RG</text>
 				</type>
-				<initmark id="ID4760373576">
+				<initmark id="ID27077575110">
 					<posattr x="56" y="-3323" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2830,52 +2646,52 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID4810830828" orientation="TtoP" order="1">
+			<arc id="ID5647443632" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID4166147547" />
-				<placeend idref="ID4760373574" />
-				<annot id="ID4810830829">
+				<transend idref="ID9378586271" />
+				<placeend idref="ID2707757518" />
+				<annot id="ID5647443633">
 					<posattr x="0" y="-3300.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<trans id="ID4435771420">
+			<trans id="ID1656569030">
 				<posattr x="0" y="-3450" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
-				<text>t29</text>
+				<text>t27</text>
 				<box w="60.000000" h="40.000000" />
 				<binding x="7.200000" y="-3.000000" />
-				<cond id="ID4435771421">
+				<cond id="ID1656569031">
 					<posattr x="130.000000" y="-3450" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1" />
+					<text tool="CPN Tools" version="4.0.1">[Fdeon_m3(v1)]</text>
 				</cond>
-				<time id="ID4435771422">
+				<time id="ID1656569032">
 					<posattr x="56" y="-3423" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1" />
 				</time>
-				<code id="ID4435771423">
+				<code id="ID1656569033">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" />
 				</code>
-				<priority id="ID4435771424">
+				<priority id="ID1656569034">
 					<posattr x="80.000000" y="0.000000" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2883,23 +2699,23 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</priority>
 			</trans>
-			<arc id="ID7991969049" orientation="PtoT" order="1">
+			<arc id="ID4361229633" orientation="PtoT" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID4435771420" />
-				<placeend idref="ID4760373574" />
-				<annot id="ID79919690410">
+				<transend idref="ID1656569030" />
+				<placeend idref="ID2707757518" />
+				<annot id="ID4361229634">
 					<posattr x="0" y="-3400.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
-					<text tool="CPN Tools" version="4.0.1">Fm1(r1)</text>
+					<text tool="CPN Tools" version="4.0.1">Fmax_m3(v1)</text>
 				</annot>
 			</arc>
-			<place id="ID1196453863">
+			<place id="ID1218153541">
 				<posattr x="0" y="-3550" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
@@ -2907,17 +2723,17 @@ r2 = (agricultor,gorim_group)
 				<text>end</text>
 				<ellipse w="75.000000" h="40.000000" />
 				<token x="-10.000000" y="0.000000" />
-				<marking x="0.000000" y="0.000000" hidden="true">
+				<marking x="0.000000" y="0.000000" hidden="false">
 					<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0" />
 				</marking>
-				<type id="ID1196453864">
+				<type id="ID1218153542">
 					<posattr x="32.5" y="-3580" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
 					<textattr colour="Black" bold="false" />
 					<text tool="CPN Tools" version="4.0.1">BOOL</text>
 				</type>
-				<initmark id="ID1196453865">
+				<initmark id="ID1218153543">
 					<posattr x="56" y="-3523" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
@@ -2925,15 +2741,15 @@ r2 = (agricultor,gorim_group)
 					<text tool="CPN Tools" version="4.0.1" />
 				</initmark>
 			</place>
-			<arc id="ID2181797411" orientation="TtoP" order="1">
+			<arc id="ID4970120285" orientation="TtoP" order="1">
 				<posattr x="0.000000" y="0.000000" />
 				<fillattr colour="White" pattern="" filled="false" />
 				<lineattr colour="Black" thick="1" type="solid" />
 				<textattr colour="Black" bold="false" />
 				<arrowattr headsize="1.200000" currentcyckle="2" />
-				<transend idref="ID4435771420" />
-				<placeend idref="ID1196453863" />
-				<annot id="ID2181797412">
+				<transend idref="ID1656569030" />
+				<placeend idref="ID1218153541" />
+				<annot id="ID4970120286">
 					<posattr x="0" y="-3500.0" />
 					<fillattr colour="White" pattern="Solid" filled="false" />
 					<lineattr colour="Black" thick="0" type="Solid" />
